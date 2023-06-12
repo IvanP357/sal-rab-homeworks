@@ -37,6 +37,6 @@ return products;
            addProduct (products[i]);           
          }
 
-        }
+         }
    
 
