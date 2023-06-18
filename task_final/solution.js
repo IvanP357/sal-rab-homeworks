@@ -45,14 +45,15 @@ function sendRequest(name, phone, address, goods, sum) {
     }
 
     data.order.address = address;
-    data.order.sum = name + phone + address + goods + sum;
+    //data.order.sum = name + phone + address + goods + sum;
 
     data.client = 'Иван' + phone;
     data.order.sum = sum;
     data.order.phone = phone;
    
    
-
+// Добавил к объекту data остальныые свойства для формирования JSON, но наверное этого мало.
+// test-runner выдает ошибку "goods[i] is undefined ", но я не понимаю что здесь не так.
 
 
 
