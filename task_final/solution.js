@@ -34,49 +34,29 @@
 // }
 
 function sendRequest(name, phone, address, goods, sum) {
-    let data = {goods: [], order: {}};
 
+  //let data = {client:any,goods: [{title:any,count:any}], order: {address:any,sum:any}};
 
+  let data = {goods: [], order: {}, client};
 
-    let countOfGoods = goods.length;
+  let countOfGoods = goods.length;
 
-    for (let i = 0; i <= countOfGoods; i += 1) {
-        data.goods.push(goods[i].title);
-    }
+  
 
-    data.order.address = address;
-    //data.order.sum = name + phone + address + goods + sum;
+    for (let i = 0; i <= countOfGoods-1; i += 1) {
+    
+    let goods = {title:goods[i].title,count:goods[i].count}
+        data.goods.push(goods[i].goods);
+  }
 
-    data.client = 'Иван' + phone;
-    data.order.sum = sum;
-    data.order.phone = phone;
+  data.order.address = `ул. ${address.street}, дом ${address.house}, ${address.entrance} подъезд, ${address.floor} этаж, кв. ${adress.flat}`
+  data.order.sum = sum;
+  data.client = `${name} ${phone}`
    
-   
-// Добавил к объекту data остальныые свойства для формирования JSON, но наверное этого мало.
-// test-runner выдает ошибку "goods[i] is undefined ", но я не понимаю что здесь не так.
-
-
 
     let jsonData = JSON.stringify(data);
-
+  // у енас уже есть объект data, заычем внутри его еще один такой же объект ?
+  
     return jsonData;
 
 }
-
-```json
-{
-  "data": {
-    "client": "Иван +7(987)65-43-210",
-    "order": {
-      "address": "ул. Ленина, дом 1, 4 подъезд, 5 этаж, кв. 53",
-      "sum": 900
-    },
-    "goods": [
-      {
-        "title": "Пицца",
-        "count": 2
-      }
-    ]
-  }
-}
-```
